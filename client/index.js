@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import ApolloClient from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 
@@ -12,10 +12,10 @@ const client = new ApolloClient({});
 const Root = () => {
   return (
     <ApolloProvider client={client}>
-      <Router history={hashHistory}>
-        <Route path="/" component={App}>
-          <IndexRoute component={SongList} />
-        </Route>
+      <Router>
+        <App>
+          <Route path="/" component={SongList} />
+        </App>
       </Router>
     </ApolloProvider>
   );
